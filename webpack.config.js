@@ -1,5 +1,9 @@
 var vue = require('vue-loader');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+var extractCSS = new ExtractTextPlugin('app.css');
+
 
 module.exports = {
     entry: {
@@ -25,6 +29,9 @@ module.exports = {
         ]
     },
     vue: {
+        loaders: {
+            css: process.env.NODE_ENV === 'production' ? extractCSS.extract('style', 'css') : 'style!css'
+        },
         autoprefixer: {
             browsers: ['> 5%','last 2 versions']
         }
@@ -33,6 +40,7 @@ module.exports = {
 
 if (process.env.NODE_ENV === 'production') {
     module.exports.plugins = [
+        extractCSS,
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: '"production"'

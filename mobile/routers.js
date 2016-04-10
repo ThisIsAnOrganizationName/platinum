@@ -1,10 +1,10 @@
-import Home from './views/Home.vue';
+import Login from './views/Login.vue';
 
 export default function(router) {
 
   router.map({
     '/': {
-      component: Home
+      component: Login
     }
   });
 
