@@ -1,5 +1,7 @@
-var vue = require('vue-loader');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+var extractCSS = new ExtractTextPlugin('app.css');
 
 module.exports = {
     entry: {
@@ -21,10 +23,17 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules|vue\/src|vue-router\/|vue-loader\/|vue-hot-reload-api\//,
                 loader: 'babel?optional[]=runtime&loose=all'
+            },
+            {
+                test: /\.css$/,
+                loader: extractCSS.extract('css')
             }
         ]
     },
     vue: {
+        loaders: {
+            css: process.env.NODE_ENV === 'production' ? extractCSS.extract('style', 'css') : 'style!css'
+        },
         autoprefixer: {
             browsers: ['> 5%','last 2 versions']
         }
@@ -33,6 +42,7 @@ module.exports = {
 
 if (process.env.NODE_ENV === 'production') {
     module.exports.plugins = [
+        extractCSS,
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: '"production"'
@@ -44,7 +54,8 @@ if (process.env.NODE_ENV === 'production') {
             }
         }),
         new webpack.optimize.OccurenceOrderPlugin()
-    ]
+    ];
 } else {
-    module.exports.devtool = '#source-map'
+    module.exports.plugins = [extractCSS];
+    module.exports.devtool = '#source-map';
 }
