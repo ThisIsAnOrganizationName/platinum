@@ -11,7 +11,9 @@
     </div>
 </template>
 
-<style>
+<style lang="less">
+@fontColor: #CFD8DC;
+
 .login {
     position: absolute;
     top: 50%;
@@ -29,16 +31,18 @@
 .login-username {
     margin-bottom: 10px;
     font-size: 14px;
-    color: #CFD8DC;
+    color: @fontColor;
 }
 
-.login-input-group input {
-    width: 100%;
-    background: #607D8B;
-    color: #CFD8DC;
-    box-sizing: border-box;
-    margin-bottom: 6px;
-    padding: 8px 12px;
+.login-input-group {
+    input {
+        width: 100%;
+        background: #607D8B;
+        color: @fontColor;
+        box-sizing: border-box;
+        margin-bottom: 6px;
+        padding: 8px 12px;
+    }
 }
 
 

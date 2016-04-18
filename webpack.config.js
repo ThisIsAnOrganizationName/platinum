@@ -25,6 +25,13 @@ module.exports = {
                 loader: 'babel?optional[]=runtime&loose=all'
             },
             {
+                test: /\.less$/,
+                loader: extractCSS.extract(
+                    'css?sourceMap!' +
+                    'less?sourceMap'
+                )
+            },
+            {
                 test: /\.css$/,
                 loader: extractCSS.extract('css')
             }
@@ -32,7 +39,7 @@ module.exports = {
     },
     vue: {
         loaders: {
-            css: process.env.NODE_ENV === 'production' ? extractCSS.extract('style', 'css') : 'style!css'
+            less: process.env.NODE_ENV === 'production' ? extractCSS.extract('style', 'css', 'less') : 'style!css!less'
         },
         autoprefixer: {
             browsers: ['> 5%','last 2 versions']

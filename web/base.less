@@ -1,6 +1,12 @@
-html, body {
+// Mixins
+.fullScreen {
     width: 100%;
     height: 100%;
+}
+
+// Start
+html, body {
+    .fullScreen;
 }
 
 body {
@@ -15,6 +21,5 @@ input {
 
 #app {
     position: relative;
-    width: 100%;
-    height: 100%;
+    .fullScreen;
 }

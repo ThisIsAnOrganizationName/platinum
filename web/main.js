@@ -4,7 +4,7 @@ import App from './App.vue';
 import registerRouters from './routers.js';
 
 
-require('./base.css');
+require('./base.less');
 
 Vue.use(Router);
 
