@@ -34,7 +34,11 @@ module.exports = {
             {
                 test: /\.css$/,
                 loader: extractCSS.extract('css')
-            }
+            },
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'url-loader?limit=8192'
+            },
         ]
     },
     vue: {

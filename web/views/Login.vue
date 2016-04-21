@@ -1,6 +1,7 @@
 <template>
+    <navbar></navbar>
     <div class="login">
-        <img class="login-avatar" src="https://avatars3.githubusercontent.com/u/5675564?v=3&amp;s=200" alt="avatar">
+        <avatar class="login-avatar" src="https://secure.gravatar.com/avatar/ed3b797144404a1221afa09bef680eb4?s=200&r=pg&d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png" size="64"></avatar>
         <div class="login-username">yneear</div>
         <div class="login-input-group">
             <input type="text" name="email" placeholder="Email" />
@@ -10,6 +11,19 @@
         </div>
     </div>
 </template>
+
+<script>
+import Navbar from '../components/Navbar.vue'
+import Avatar from '../components/Avatar.vue'
+
+export default {
+    props: [],
+    components: {
+        Navbar,
+        Avatar,
+    }
+}
+</script>
 
 <style lang="less">
 @fontColor: #CFD8DC;
@@ -24,8 +38,6 @@
 }
 
 .login-avatar {
-    border-radius: 50%;
-    width: 64px;
 }
 
 .login-username {
