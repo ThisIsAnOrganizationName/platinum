@@ -25,7 +25,14 @@ export default {
 
         img.onload = () => {
             this.$el.appendChild(img);
+        };
+
+        img.onerror = () => {
+            console.log('Loading avatar error');
+            img.src = require('../media/social.png');
+            this.$el.appendChild(img);
         }
+
     }
 
 }
